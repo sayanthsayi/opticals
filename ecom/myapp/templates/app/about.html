@@ -1,0 +1,64 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block main-content %}
+
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'app/images/banner/banner.gif' %}" class="d-block w-100" alt="banner image">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'app/images/banner/banner6.gif' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'app/images/banner/banner5.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <br>
+  <br>
+  <br>
+  
+<div class="container mt-3 text-white"style="background-color: black;">
+  <br />
+  <h2 class="text-center fs-4">About Us</h2>
+  <br />
+  <div class="row container">
+    <p class="fs-4 text-center">
+      Founded in 2010 by an ex-Microsoft 'techie' with no money but truckloads
+      of relentless passion to make a difference in this world, Lens World is
+      India's fastest growing eyewear business today. With a rapidly growing
+      business reaching out to over 100,000 customers a month via a unique
+      combination of a strong online business at www.lenskart.com, uniquely
+      designed 1400+ stores, and a first-of-its-kind 'Home Eye Check-up'
+      service, Lens World is revolutionizing the eyewear industry in India.
+    </p>
+  </div>
+  <br /><br />
+  <h2 class="text-center">Mission</h2>
+  <br />
+  <div class="row container">
+    <p class="fs-4 text-center">
+      Make customers feel 'wow' by doing something that has never been done
+      before in the eyewear industry. It began with an aim. An aim to provide
+      every Indian access to high-quality designer glasses without shelling out
+      their pocket. We rocked our brains. We broke our backs to come up with a
+      plan that will not just change the way this industry works but also
+      completely sweep customers off their feet. It can only be achieved if we
+      provide.
+    </p>
+  </div>
+</div>
+
+{% endblock main-content %}
+

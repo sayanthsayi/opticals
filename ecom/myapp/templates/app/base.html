@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+     <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
+    <title> LENS WORLD | {% block title %}{% endblock title %} </title>
+  <style>
+    html{
+      scroll-behavior: smooth;
+    }
+    .logo_text:hover{
+      color: black;
+    }
+    .nav-link:hover{
+      border: 3px solid rgb(2, 0, 0);
+      border-radius: 50px;
+      box-shadow: 2px 2px 2px;
+      transition: all 0.9s;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    #navbar{
+      background-color:white;
+      /* background-image:url("{% static 'app/images/bgbanner.png' %}"); */
+      background-size: cover;
+    }
+    .logo_text{
+      width: 100px;
+    animation-name: example;
+    animation-duration: 5s;
+    color: black;
+    }
+    @keyframes example {
+      25%  {color: rgb(0, 0, 0); }
+      0%   {color: white;margin-top: -150px;}
+      100% {color: black;}
+      50%  {color: rgba(255, 255, 255, 0);}
+
+
+}
+#cardteam{
+  animation-name: examplee;
+    animation-duration: 10s;
+    transition: all 0.4s;
+
+}
+    @keyframes examplee{
+      25%  {color: black; opacity:0%}
+      0%   {color: rgb(255, 255, 255);opacity:0%;}
+      100% {color: black;opacity:100%}
+      50%  {color: rgb(245, 245, 245);opacity:70%}
+
+
+}
+  .card:hover{
+    box-shadow: 5px 5px 10px;
+    transition: all 0.4s;
+  }
+  .dropdown-menu{
+    background-color:white;
+    color: black;
+    border: none;
+  }
+  #dropdown-menu:hover{
+    color: black;
+  }
+  #demo{
+    /* background-image:url("{% static 'app/images/bgbanner.png' %}"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+  }
+  #background{
+    background-image:url("{% static 'app/images/glasses.jpg' %}");
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  #background2{
+    background-image:url("{% static 'app/images/kidsglass.jpg' %}");
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+ #cardteam:hover{
+    margin-top: 30px;
+    transition: all 0.4s;
+ }
+
+
+
+  </style>
+
+</head>
+<body >
+    
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="navbar">
+        <div class="container ">
+          <a class="navbar-brand" href="/">
+              <img src="{% static "app/images/lenslogo.png" %}" width="100" height="50" id="logo" />
+              <h5 class="logo_text">Lens World</h5>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
+              {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link active text-dark" aria-current="page" href="/" id="nav-link">HOME</a>
+              </li>
+             
+              <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                  PRODUCTS
+                </a>
+                <ul class="dropdown-menu" id="dropdown-menu">
+                  <li><a class="dropdown-item " href="{% url 'category' 'eg' %}">EYEGLASSES</a></li>
+                  <li><a class="dropdown-item " href="{% url 'category' 'cg' %}">COMPUTER GLASSES</a></li>
+                  <li><a class="dropdown-item " href="{% url 'category' 'kg' %}">KIDS GLASSES</a></li>
+                  <li><a class="dropdown-item " href="{% url 'category' 'cl' %}">CONTACT LENSES</a></li>
+                  <li><a class="dropdown-item " href="{% url 'category' 'sg' %}">SUN GLASSES</a></li>
+                  <li><a class="dropdown-item " href="{% url 'category' 'psg' %}">POWER SUN GLASSES</a></li>
+                </ul>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link text-dark" href="{% url 'contact' %}">CONTACT US</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="{% url 'about' %}">ABOUT US</a>
+              </li>
+            </ul>
+            <form class="d-flex ms-auto " role="search" action="/search">
+              <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search" name="search">
+              <button class="btn btn-outline-danger" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown mx-2">
+              <a class="nav-link dropdown-toggle text-dark" href="#"
+              id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Settings</a>
+                <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                  <li><a class="dropdown-item text-dark" href="{% url 'profile' %}">Profile</a></li>
+                  <li><a class="dropdown-item text-dark" href="{% url 'orders' %}">Orders</a></li>
+                  <li><a class="dropdown-item text-dark" href="{% url 'passwordchange' %}">Change Password</a></li>
+                  <li><a class="dropdown-item text-danger" href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </li>
+            <li class="nav-item mx-2" ></a>
+            </li>
+              <a href="{% url 'showcart' %}" class="nav-link text-white"><span class="badge bg-danger">{% if totalitem > 0 %} {{totalitem}} {% endif %}</span><i class="bi bi-cart " style="font-size:24px; color: black;"></i></a>                
+            <li class="nav-item mx-2">
+              <a href="{% url 'showwishlist' %}" class="nav-link text-white"><span class="badge bg-danger">{% if wishitem > 0 %} {{wishitem}} {% endif %}</span><i class="fa fa-heart fa-lg mt-2" style="font-size:24px; color: rgb(236, 8, 8);" ></i></a>
+            </li>
+            {% else %}
+            <li class="nav-item mx-2">
+              <a href="{% url 'login' %}" class="nav-link text-dark">Login</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a href="{% url 'customerregistration' %}" class="nav-link text-dark">Registration</a>
+            </li>
+            {% endif %}
+          </ul>
+          </div>
+        </div>
+      </nav>
+
+      {% block banner-slider %}{% endblock banner-slider %}
+      {% block information %}{% endblock information %}
+      {% block main-content %}{% endblock main-content %}
+      {% block payment-gateway %}{% endblock payment-gateway %}
+      
+
+      <footer class="container-fluid  bg-dark text-center p-2 mt-5 text-white">
+        <h1>Buy The Best Eyewear From Lens World</h1>
+<p>Lens World Is The Leading E-Commerce Portal For Eyewear In India. It Has Revolutionised The Eyewear Industry In The Country With Its Omni-Channel Approach. From An Ever-Growing Number Of Offline Stores Across Major Cities In The Country To Innovative Integration Of Technology While Purchasing Online, Lens World Caters To Every Customer With Several Deals And Offers.
+
+  A One-Stop Online Solution For Purchasing Eyewear And Its Accessories, Lens World Delivers Them Right At Your Doorstep With Convenient Methods Of Payment. Sunglasses As Well As Eyeglasses Are Available For Men And Women In A Diverse Array Of Styles And Trendy Colours. If You Want To Try Out Contact Lenses, Pick The Ones Of Your Choice From The Extensive Variety Of Coloured Contact Lenses From Our Online Store.</p> 
+
+        copyright : 2022 || Develop by : Lens World Ltd.
+      </footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'app/js/all.min.js' %}"></script>
+<script src="{% static 'app/js/myscript.js' %}"></script>
+
+
+</body>
+</html>
